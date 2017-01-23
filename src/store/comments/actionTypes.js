@@ -1,0 +1,1 @@
+export const COMMENTS_FETCHED = 'posts.COMMENTS_FETCHED';
