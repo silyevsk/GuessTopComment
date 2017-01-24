@@ -3,34 +3,33 @@ import { Text, View } from 'react-native';
 import * as commentsActions from '../store/comments/actions';
 import { connect } from 'react-redux';
 import * as commentsSelectors from '../store/comments/selectors';
+import * as postsSelectors from '../store/posts/selectors';
 import CommentSelectionView from '../components/CommentsSelectionView';
+import _ from 'lodash';
 
 class CommentsContainer extends Component {
     render() {
         return (
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                 <CommentSelectionView
-                    titlesArray={this.props.titlesArray}
+                    rowsData={_.map(this.props.commentsArray, (x, index) => { return {index, title: x.title} })}
                     clickHandler={this.handleRowClick.bind(this)}
                     />
             </View>
         );
     }
 
-    handleRowClick(rowIndex) {
-        if(rowIndex === this.props.topCommentIndex) {
-            //increment score
-        }
-
-        // proceed to the next question
+    handleRowClick(rowData) {
+        this.props.dispatch(commentsActions.handleCommentSelection(this.props.postId, rowData.index));
     }
 }
 
 function mapStateToProps(state) {
-    console.warn("in mapStateToProps: ", state.comments);
     return {
-        titlesArray: commentsSelectors.getCommentsTitlesArray(state),
-        topCommentIndex: commentsSelectors.getTopCommentIndex(state)
+        postId: postsSelectors.getCurrentPostId(state),
+        commentsArray: commentsSelectors.getCommentsArray(state),
+        topCommentIndex: commentsSelectors.getTopCommentIndex(state),
+        selectedCommentId: commentsSelectors.getSelectedIndex(state)
     };
 }
 

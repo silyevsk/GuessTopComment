@@ -14,3 +14,9 @@ export function fetchComments(postId) {
         }
     }
 }
+
+export function handleCommentSelection(postId, commentIndex) {
+    return (dispatch, getState) => {
+        dispatch({type: types.COMMENT_SELECTED, action: {postId, commentIndex}});
+    };
+}

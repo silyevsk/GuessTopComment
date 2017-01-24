@@ -1,13 +1,13 @@
 import _ from 'lodash';
 
-export function getCurrentComments(state) {
+export function getCommentsArray(state) {
     return _.get(state.comments.commentsById, state.posts.currentPostId) || [];
 }
 
-export function getCommentsTitlesArray(state) {
-    return _.map(getCurrentComments(state), (x) => x.title)
+export function getTopCommentIndex(state) {
+    return _.maxBy(getCommentsArray(state), (x) => x.score);
 }
 
-export function getTopCommentIndex(state) {
-    return _.maxBy(getCurrentComments(state), (x) => x.score);
+export function getSelectedIndex(state) {
+    return _.indexOf(getCommentsArray(state), state.selectedCommentIndex);
 }
