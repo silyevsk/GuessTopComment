@@ -5,9 +5,10 @@ export function getCommentsArray(state) {
 }
 
 export function getTopCommentIndex(state) {
-    return _.maxBy(getCommentsArray(state), (x) => x.score);
+    const commentsArray = getCommentsArray(state);
+    return commentsArray.indexOf(_.maxBy(commentsArray, (x) => x.score));
 }
 
 export function getSelectedIndex(state) {
-    return _.indexOf(getCommentsArray(state), state.selectedCommentIndex);
+    return state.comments.selectedCommentIndex;
 }

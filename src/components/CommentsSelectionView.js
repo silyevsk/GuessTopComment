@@ -21,7 +21,7 @@ export default class CommentsSelectionView extends Component {
         );
     }
 
-    renderRow = (rowData) => {
+    renderRow = (rowData) => {  
         const color = (() => {
             switch(rowData.index) {
                 case this.props.rightAnswer: return 'green';
@@ -34,7 +34,7 @@ export default class CommentsSelectionView extends Component {
                 style={{backgroundColor: color}}
                 >
                 <Text
-                    onPress={() => this.props.clickHandler(rowData)}
+                    onPress={() => this.props.clickHandler && this.props.clickHandler(rowData)}
                 >{rowData.title}</Text>
             </View>
         )

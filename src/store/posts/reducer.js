@@ -1,5 +1,5 @@
 import Immutable from 'seamless-immutable';
-import * as types from './actionTypes';
+import * as types from '../actionTypes';
 import _ from 'lodash';
 
 const initialState = Immutable({

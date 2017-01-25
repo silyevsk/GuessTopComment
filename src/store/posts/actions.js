@@ -1,6 +1,6 @@
 import redditService from '../../services/reddit';
 import _ from 'lodash';
-import * as types from './actionTypes';
+import * as types from '../actionTypes';
 
 export function fetchMorePosts() {
     return async(dispatch, getState) => {

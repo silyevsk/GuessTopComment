@@ -1,6 +1,6 @@
 import redditService from '../../services/reddit';
 import _ from 'lodash';
-import * as types from './actionTypes';
+import * as types from '../actionTypes';
 
 export function fetchComments(postId) {
     return async(dispatch, getState) => {
@@ -17,6 +17,6 @@ export function fetchComments(postId) {
 
 export function handleCommentSelection(postId, commentIndex) {
     return (dispatch, getState) => {
-        dispatch({type: types.COMMENT_SELECTED, action: {postId, commentIndex}});
+        dispatch({type: types.COMMENT_SELECTED, postId, commentIndex});
     };
 }

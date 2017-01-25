@@ -17,7 +17,7 @@ class PostContainer extends Component {
 
         if (!this.props.post.title) {
             return (
-                <Text>No title</Text>
+                <Text testId="PostContainer.title">No title</Text>
             )
         }
 
@@ -28,7 +28,7 @@ class PostContainer extends Component {
 
     renderLoading() {
         return (
-            <Text>Loading..</Text>
+            <Text testID='PostContainer.loading'>Loading..</Text>
         );
     }
 }
